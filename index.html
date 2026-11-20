@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090b0a" />
+  <title>Pdf Reader — Chat with your PDFs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{font-family:'DM Sans',sans-serif;color:#20231f;background:#f7f7f4;font-synthesis:none;text-rendering:optimizeLegibility}*{box-sizing:border-box}body{margin:0;min-height:100vh}.shell{min-height:100vh;display:grid;grid-template-columns:260px minmax(0,1fr)}aside{background:#f0f1ec;border-right:1px solid #e4e6df;padding:26px 18px;display:flex;flex-direction:column;gap:30px}.brand{display:flex;align-items:center;gap:11px;padding:0 8px;font:800 19px Manrope,sans-serif;letter-spacing:-.7px}.mark{width:33px;height:33px;border-radius:11px;background:#26382e;color:#e6f0dd;display:grid;place-items:center;font-size:17px}.new-chat{border:0;background:#293c31;color:#fff;border-radius:11px;padding:12px 14px;font:600 14px inherit;cursor:pointer;text-align:left}.new-chat span{font-size:19px;margin-right:8px;vertical-align:-1px}.side-label{font-size:11px;color:#92978e;text-transform:uppercase;letter-spacing:1px;font-weight:700;padding:0 9px;margin-bottom:-18px}.doc-list{display:flex;flex-direction:column;gap:7px}.doc-item{border:0;background:transparent;border-radius:10px;padding:11px 10px;text-align:left;color:#555d55;display:flex;gap:10px;align-items:center;font:500 13px 'DM Sans';cursor:pointer}.doc-item:hover,.doc-item.active{background:#e5e8df;color:#26382e}.pdf-icon{width:29px;height:32px;background:#fff;border:1px solid #e4e6df;border-radius:7px;display:grid;place-items:center;color:#d96755;font-size:9px;font-weight:700;flex-shrink:0}.doc-meta{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.doc-empty{color:#9a9e96;font-size:12px;padding:8px 10px}.profile{margin-top:auto;border-top:1px solid #dfe2da;padding:18px 6px 0;display:flex;gap:10px;align-items:center;color:#626960;font-size:12px}.avatar{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;background:#d9e4d4;color:#3b5744;font-weight:700}.main{display:flex;flex-direction:column;min-width:0;min-height:100vh}.topbar{height:68px;border-bottom:1px solid #e9eae5;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,64px);background:#f9f9f6}.top-title{font:700 14px Manrope,sans-serif}.top-sub{color:#8b9088;font-size:12px;margin-left:9px}.top-actions{display:flex;align-items:center;gap:9px;color:#777e75;font-size:12px}.status-dot{width:7px;height:7px;border-radius:50%;background:#79a77c}.content{width:min(820px,100%);margin:0 auto;padding:50px 28px 28px;flex:1;display:flex;flex-direction:column}.intro{margin:auto 0 32px}.eyebrow{color:#729078;font-size:12px;font-weight:700;letter-spacing:.3px;margin-bottom:14px}.intro h1{font:600 clamp(29px,4vw,42px)/1.18 Manrope,sans-serif;letter-spacing:-1.8px;margin:0 0 14px;max-width:550px}.intro p{color:#858b82;margin:0;font-size:15px;line-height:1.7;max-width:490px}.upload-card{border:1px dashed #c9d0c5;background:#fbfcf9;border-radius:16px;padding:21px 22px;display:flex;align-items:center;gap:16px;transition:.2s}.upload-card.drag{border-color:#64856b;background:#f0f5ed}.upload-graphic{width:48px;height:48px;flex-shrink:0;border-radius:14px;background:#eaf0e6;color:#59765f;display:grid;place-items:center}.upload-copy{flex:1}.upload-copy strong{font-size:14px;display:block;margin-bottom:4px}.upload-copy small{color:#92978e;font-size:12px}.button{border:0;border-radius:9px;padding:10px 15px;background:#293c31;color:white;font:600 12px 'DM Sans';cursor:pointer}.button:hover{background:#3c5645}.button:disabled{opacity:.5;cursor:wait}.steps{display:flex;gap:0;margin:24px 0 0;padding:0;list-style:none}.steps li{flex:1;position:relative;display:flex;align-items:center;gap:8px;color:#a0a49d;font-size:11px}.steps li:not(:last-child):after{content:'';height:1px;background:#e2e5dd;flex:1;margin:0 7px}.step-num{width:22px;height:22px;display:grid;place-items:center;border-radius:50%;border:1px solid #dfe3da;font-size:10px;background:#f9f9f6}.steps li.done{color:#57735d}.steps li.done .step-num{background:#e6eee2;border-color:#d6e3d3}.steps li.current{color:#3d5b44;font-weight:700}.steps li.current .step-num{border-color:#8ca690}.messages{display:flex;flex-direction:column;gap:17px;margin:24px 0}.message{max-width:86%;padding:15px 17px;border-radius:15px;font-size:14px;line-height:1.65;white-space:pre-wrap}.message.assistant{background:white;border:1px solid #edeee9;border-top-left-radius:5px;color:#394039}.message.user{align-self:flex-end;background:#e8eee4;border-top-right-radius:5px}.sources{display:flex;gap:7px;margin-top:12px;flex-wrap:wrap}.source{font-size:11px;background:#f1f3ee;border-radius:20px;padding:5px 9px;color:#667261}.composer{border:1px solid #e4e6df;border-radius:15px;background:#fff;padding:9px;display:flex;align-items:flex-end;gap:10px;box-shadow:0 5px 18px #35462d08}.composer textarea{flex:1;border:0;outline:0;resize:none;min-height:43px;max-height:150px;padding:12px 10px;font:14px 'DM Sans';color:#303730}.composer textarea::placeholder{color:#a1a59e}.send{height:40px;width:43px;border:0;border-radius:11px;background:#293c31;color:white;cursor:pointer;font-size:18px}.send:disabled{background:#cbd2c7;cursor:not-allowed}.hint{text-align:center;color:#a1a59e;font-size:10px;margin:10px 0 0}.notice{font-size:12px;color:#6e756b;margin-top:12px;min-height:16px}.notice.error{color:#b8584d}.hidden{display:none!important}.empty-state{color:#a0a49c;text-align:center;font-size:13px;padding:15px}.menu{display:none}
+    /* Dark workspace */
+    :root{color:#ecefe9;background:#090b0a;color-scheme:dark}
+    body,.main{background:#090b0a}
+    aside{background:#0e110f;border-color:#202521}
+    .brand,.top-title{color:#f0f2ed}
+    .mark{background:#d8e7d7;color:#233529}
+    .new-chat,.button,.send{background:#d9e8d8;color:#142017}
+    .new-chat:hover,.button:hover,.send:hover{background:#c4d9c4}
+    .side-label,.top-sub,.top-actions,.doc-empty,.profile,.intro p,.upload-copy small,.hint{color:#929b91}
+    .doc-item{color:#b5bdb4}
+    .doc-item:hover,.doc-item.active{background:#1c241e;color:#e0ede0}
+    .doc-row{position:relative;display:flex;align-items:center;border-radius:10px;padding-right:5px}
+    .doc-row .doc-item{flex:1;min-width:0}
+    .doc-actions{position:relative;flex:0 0 34px}
+    .doc-more{width:30px;height:30px;border:0;border-radius:8px;background:transparent;color:#9da79c;font-size:20px;line-height:1;cursor:pointer;opacity:.72}
+    .doc-row:hover .doc-more,.doc-row:focus-within .doc-more,.doc-more[aria-expanded="true"]{opacity:1}
+    .doc-more:hover{background:#29342b;color:#edf3eb}
+    .doc-menu{position:absolute;z-index:10;right:0;top:34px;width:150px;padding:5px;background:#171d19;border:1px solid #303a32;border-radius:10px;box-shadow:0 12px 28px #0008}
+    .doc-menu[hidden]{display:none}
+    .doc-menu button{width:100%;padding:9px 10px;border:0;border-radius:7px;text-align:left;background:transparent;color:#e0e7df;font:500 12px 'DM Sans';cursor:pointer}
+    .doc-menu button:hover{background:#263128}
+    .doc-menu button.delete-action{color:#f19c90}
+    .archived-section{margin-top:2px;color:#9da79c}
+    .archived-section summary{cursor:pointer;list-style:none;padding:9px;font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+    .archived-section summary::-webkit-details-marker{display:none}
+    .archived-section summary:after{content:'›';float:right;font-size:16px;transform:rotate(90deg)}
+    .archived-section[open] summary:after{transform:rotate(-90deg)}
+    .profile-main{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .logout-button{border:0;background:transparent;color:#95a095;font:500 11px 'DM Sans';cursor:pointer;padding:6px}
+    .auth-backdrop{position:fixed;inset:0;z-index:100;background:#492b50d9;display:grid;place-items:center;padding:20px;backdrop-filter:blur(7px)}
+    .auth-backdrop.hidden{display:none}
+    .auth-card{width:min(430px,100%);position:relative;background:#111613;border:1px solid #303a32;border-radius:20px;padding:30px;box-shadow:0 24px 80px #000a}
+    .auth-close{position:absolute;right:16px;top:14px;width:34px;height:34px;border:0;border-radius:9px;background:#1b221d;color:#aeb8ad;font-size:20px;cursor:pointer}
+    .auth-kicker{font-size:11px;color:#a8c5a7;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:9px}
+    .auth-card h2{font:700 25px Manrope,sans-serif;letter-spacing:-.7px;color:#f1f4ef;margin:0 0 7px}
+    .auth-description{color:#939d93;font-size:13px;line-height:1.5;margin:0 0 20px}
+    .auth-tabs{display:grid;grid-template-columns:1fr 1fr;background:#0b0e0c;border:1px solid #252d27;border-radius:11px;padding:4px;margin-bottom:18px}
+    .auth-tab{border:0;border-radius:8px;padding:9px;background:transparent;color:#929b92;font:600 13px 'DM Sans';cursor:pointer}
+    .auth-tab.active{background:#27342a;color:#e5eee3}
+    .auth-fields{display:grid;gap:13px}
+    .auth-field{display:grid;gap:6px;color:#bdc5bc;font-size:12px;font-weight:600}
+    .auth-field input{height:43px;border:1px solid #303a32;border-radius:9px;background:#0b0f0c;color:#f0f3ee;padding:0 12px;font:14px 'DM Sans';outline:none}
+    .auth-field input:focus{border-color:#8fac91;box-shadow:0 0 0 3px #8fac9122}
+    .auth-submit{width:100%;height:44px;border:0;border-radius:10px;background:#d9e8d8;color:#142017;font:700 13px 'DM Sans';cursor:pointer;margin-top:18px}
+    .auth-submit:disabled{opacity:.6;cursor:wait}
+    .auth-error{color:#f19c90;font-size:12px;min-height:16px;margin-top:10px}
+    @media(max-width:460px){.auth-card{padding:25px 20px}}
+    .pdf-icon{background:#171b18;border-color:#2a302b}
+    .profile,.topbar{border-color:#202521}
+    .topbar{background:#0c0f0d}
+    .avatar{background:#26372a;color:#d8e7d7}
+    .content{background:#090b0a}
+    .eyebrow{color:#9cbd9e}
+    .intro h1{color:#f0f2ed}
+    .upload-card{background:#111512;border-color:#343d35}
+    .upload-card.drag{background:#18221a;border-color:#9cbd9e}
+    .upload-graphic{background:#202b21;color:#b5d0b4}
+    .button:disabled,.send:disabled{background:#29312a;color:#777f77}
+    .message.assistant{background:#141815;border-color:#282f29;color:#e2e7e0}
+    .message.user{background:#203024;color:#e5eee3}
+    .source{background:#202720;color:#bdcbbb}
+    .composer{background:#111512;border-color:#303831;box-shadow:0 5px 18px #0006}
+    .composer textarea{background:transparent;color:#e7ebe5}
+    .composer textarea::placeholder{color:#788078}
+    .notice{color:#aabd9e}
+    .notice.error{color:#ef9588}
+    .mode-notice{margin-top:9px;color:#c4b988;font-size:11px;line-height:1.5}
+    @media(max-width:760px){.shell{grid-template-columns:1fr}aside{display:none}.topbar{height:60px;padding:0 18px}.top-sub{display:none}.content{padding:32px 18px 20px}.intro{margin:0 0 25px}.intro h1{letter-spacing:-1.2px}.upload-card{flex-wrap:wrap;padding:17px}.upload-copy{min-width:calc(100% - 70px)}.upload-card .button{margin-left:64px}.message{max-width:94%}.top-actions{font-size:0}.status-dot{font-size:12px}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside>
+      <div class="brand"><div class="mark">✳</div>Pdf Reader</div>
+      <button class="new-chat" id="newChat"><span>＋</span>New conversation</button>
+      <div class="side-label">Your library</div>
+      <div class="doc-list" id="docList"><div class="doc-empty">Your PDFs will appear here</div></div>
+      <details class="archived-section" id="archivedSection"><summary>Archived</summary><div class="doc-list" id="archivedList"><div class="doc-empty">No archived PDFs</div></div></details>
+      <div class="profile"><div class="avatar" id="profileAvatar">?</div><div class="profile-main"><strong id="profileName">Guest</strong><br><span id="profileEmail" style="color:#969b93">Sign in to upload</span></div><button class="logout-button hidden" id="logoutButton" type="button">Log out</button></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><span class="top-title">PDF assistant</span><span class="top-sub" id="selectedLabel">No document selected</span></div><div class="top-actions"><span class="status-dot"></span> Your files stay private</div></header>
+      <section class="content">
+        <div class="intro" id="intro">
+          <div class="eyebrow">YOUR DOCUMENT, UNDERSTOOD</div>
+          <h1>Good questions deserve better answers.</h1>
+          <p>Upload a PDF and have a focused conversation with its contents. Every answer is grounded in your document, with page references to help you check the details.</p>
+        </div>
+        <div class="upload-card" id="dropZone">
+          <div class="upload-graphic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0L7 9m5-5 5 5"/><path d="M20 16.5v2A1.5 1.5 0 0 1 18.5 20h-13A1.5 1.5 0 0 1 4 18.5v-2"/></svg></div>
+          <div class="upload-copy"><strong id="uploadTitle">Start with a document</strong><small id="uploadText">PDF files up to 20 MB</small></div>
+          <input type="file" id="fileInput" accept="application/pdf,.pdf" hidden />
+          <button class="button" id="uploadButton">Choose a PDF</button>
+        </div>
+        <div class="notice" id="notice" role="status"></div>
+        <div class="mode-notice hidden" id="modeNotice" role="note"></div>
+        <div class="messages" id="messages"></div>
+        <form class="composer" id="chatForm"><textarea id="question" rows="1" placeholder="Ask a question about your PDF…" disabled></textarea><button class="send" id="sendButton" type="submit" disabled aria-label="Send message">↑</button></form>
+        <div class="hint">Answers are based on your document. Check the cited pages for important details.</div>
+      </section>
+    </main>
+  </div>
+  <div class="auth-backdrop hidden" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <section class="auth-card">
+      <button class="auth-close" id="authClose" type="button" aria-label="Close">×</button>
+      <div class="auth-kicker">Papertrail account</div>
+      <h2 id="authTitle">Welcome back</h2>
+      <p class="auth-description" id="authDescription">Log in to upload and chat with your PDFs.</p>
+      <div class="auth-tabs"><button type="button" class="auth-tab active" data-auth-mode="login">Log in</button><button type="button" class="auth-tab" data-auth-mode="register">Register</button></div>
+      <form id="authForm">
+        <div class="auth-fields">
+          <label class="auth-field auth-register-field hidden" id="usernameField">Username<input id="authUsername" autocomplete="username" minlength="2" maxlength="50" /></label>
+          <label class="auth-field">Email<input id="authEmail" type="email" autocomplete="email" required maxlength="254" /></label>
+          <label class="auth-field auth-register-field hidden" id="contactField">Contact number<input id="authContact" type="tel" autocomplete="tel" minlength="7" maxlength="24" /></label>
+          <label class="auth-field">Password<input id="authPassword" type="password" autocomplete="current-password" minlength="8" required maxlength="128" /></label>
+        </div>
+        <button class="auth-submit" id="authSubmit" type="submit">Log in</button>
+        <div class="auth-error" id="authError" role="alert"></div>
+      </form>
+    </section>
+  </div>
+  <script>
+    // The page may be hosted by VS Code Live Server or another static server.
+    // Send API calls to FastAPI unless an explicit API URL is supplied.
+    // Always target the FastAPI service. The frontend may be opened through Live Server on another port.
+    const API = (window.PDF_CHAT_API || 'http://localhost:8011').replace(/\/$/, '');
+    const $ = (id) => document.getElementById(id);
+    let activeDocument = null, documents = [], chatHistory = [];
+    const activePolls = new Set();
+    const TOKEN_KEY='papertrail_session_token';
+    let authToken=localStorage.getItem(TOKEN_KEY)||'', currentUser=null, pendingFile=null, authMode='login';
+    async function apiFetch(path,options={}){const headers={...(options.headers||{})};if(authToken)headers.Authorization=`Bearer ${authToken}`;return fetch(`${API}${path}`,{...options,headers})}
+    const setNotice = (message, error=false) => { $('notice').textContent=message; $('notice').classList.toggle('error',error); };
+    function renderProfile(){const name=currentUser?.username||'Guest';$('profileName').textContent=name;$('profileEmail').textContent=currentUser?.email||'Log in to upload';$('profileAvatar').textContent=name.charAt(0).toUpperCase();$('logoutButton').classList.toggle('hidden',!currentUser)}
+    function setAuthMode(mode){authMode=mode;$('authForm').dataset.mode=mode;$('authTitle').textContent=mode==='login'?'Welcome back':'Create your account';$('authDescription').textContent=mode==='login'?'Log in to upload and chat with your PDFs.':'Register to keep your PDFs in your private library.';$('authSubmit').textContent=mode==='login'?'Log in':'Create account';$('authError').textContent='';document.querySelectorAll('[data-auth-mode]').forEach(tab=>tab.classList.toggle('active',tab.dataset.authMode===mode));document.querySelectorAll('.auth-register-field').forEach(field=>field.classList.toggle('hidden',mode!=='register'));$('authUsername').required=mode==='register';$('authContact').required=mode==='register';$('authPassword').autocomplete=mode==='login'?'current-password':'new-password'}
+    function openAuthModal(mode='login'){setAuthMode(mode);$('authModal').classList.remove('hidden');setTimeout(()=>$('authEmail').focus(),0)}
+    function closeAuthModal(){$('authModal').classList.add('hidden');$('authError').textContent=''}
+    async function clearSession(){authToken='';currentUser=null;localStorage.removeItem(TOKEN_KEY);documents=[];activeDocument=null;chatHistory=[];renderProfile();renderDocs();$('selectedLabel').textContent='No document selected';$('uploadTitle').textContent='Start with a document';$('uploadText').textContent='PDF files up to 20 MB';$('intro').classList.remove('hidden');$('messages').innerHTML='';$('question').disabled=true;$('sendButton').disabled=true}
+    async function restoreSession(){if(!authToken){renderProfile();renderDocs();return}try{const response=await apiFetch('/api/auth/me');if(!response.ok){await clearSession();return}currentUser=await response.json();renderProfile();await loadDocuments()}catch{await clearSession()}}
+    document.querySelectorAll('[data-auth-mode]').forEach(tab=>tab.onclick=()=>setAuthMode(tab.dataset.authMode));
+    $('authClose').onclick=closeAuthModal;$('authModal').onclick=event=>{if(event.target===$('authModal'))closeAuthModal()};document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!$('authModal').classList.contains('hidden'))closeAuthModal()});
+    $('authForm').onsubmit=async event=>{event.preventDefault();$('authSubmit').disabled=true;$('authError').textContent='';const body=authMode==='register'?{username:$('authUsername').value.trim(),email:$('authEmail').value.trim(),contact_number:$('authContact').value.trim(),password:$('authPassword').value}:{email:$('authEmail').value.trim(),password:$('authPassword').value};try{const response=await apiFetch(`/api/auth/${authMode}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const result=await response.json();if(!response.ok)throw new Error(result.detail||'Could not sign in.');authToken=result.token;currentUser=result.user;localStorage.setItem(TOKEN_KEY,authToken);renderProfile();closeAuthModal();await loadDocuments();if(pendingFile){const file=pendingFile;pendingFile=null;uploadFile(file)}else setNotice(`Welcome, ${currentUser.username}. Choose a PDF to upload.`)}catch(error){$('authError').textContent=error.message||'Could not reach the account service.'}finally{$('authSubmit').disabled=false}};
+    $('logoutButton').onclick=async()=>{try{await apiFetch('/api/auth/logout',{method:'POST'})}catch{}await clearSession()};
+    function renderDocList(list,items,emptyText){list.innerHTML='';if(!items.length){list.innerHTML=`<div class="doc-empty">${emptyText}</div>`;return}items.forEach(doc=>{const row=document.createElement('div');row.className='doc-row';const select=document.createElement('button');select.className='doc-item'+(activeDocument?.id===doc.id?' active':'');select.innerHTML='<span class="pdf-icon">PDF</span><span class="doc-meta"></span>';select.querySelector('.doc-meta').textContent=doc.filename;select.title=doc.filename;select.onclick=()=>selectDocument(doc);const actions=document.createElement('div');actions.className='doc-actions';const more=document.createElement('button');more.className='doc-more';more.type='button';more.textContent='⋯';more.setAttribute('aria-label',`Actions for ${doc.filename}`);more.setAttribute('aria-expanded','false');const menu=document.createElement('div');menu.className='doc-menu';menu.hidden=true;const archive=document.createElement('button');archive.type='button';archive.textContent=doc.archived?'Restore to library':'Archive';archive.onclick=()=>setArchived(doc,!doc.archived);const remove=document.createElement('button');remove.type='button';remove.className='delete-action';remove.textContent='Delete';remove.onclick=()=>deleteDocument(doc);menu.append(archive,remove);more.onclick=event=>{event.stopPropagation();document.querySelectorAll('.doc-menu').forEach(other=>{if(other!==menu){other.hidden=true;other.parentElement.querySelector('.doc-more').setAttribute('aria-expanded','false')}});menu.hidden=!menu.hidden;more.setAttribute('aria-expanded',String(!menu.hidden))};actions.append(more,menu);row.append(select,actions);list.append(row)})}
+    function renderDocs(){renderDocList($('docList'),documents.filter(doc=>!doc.archived),'Your PDFs will appear here');renderDocList($('archivedList'),documents.filter(doc=>doc.archived),'No archived PDFs');$('archivedSection').classList.toggle('hidden',!documents.some(doc=>doc.archived))}
+    async function setArchived(doc,archived){try{const response=await apiFetch(`/api/documents/${doc.id}/archive`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({archived})});const updated=await response.json();if(!response.ok)throw new Error(updated.detail||'Could not update this PDF.');documents=documents.map(item=>item.id===doc.id?updated:item);if(activeDocument?.id===doc.id)activeDocument=updated;renderDocs()}catch(error){setNotice(error.message,true)}}
+    async function deleteDocument(doc){try{const response=await apiFetch(`/api/documents/${doc.id}`,{method:'DELETE'});if(!response.ok){let result={};try{result=await response.json()}catch{}throw new Error(result.detail||`Could not delete ${doc.filename} (HTTP ${response.status}).`)}documents=documents.filter(item=>item.id!==doc.id);if(activeDocument?.id===doc.id){activeDocument=null;$('selectedLabel').textContent='No document selected';$('uploadTitle').textContent='Start with a document';$('uploadText').textContent='PDF files up to 20 MB';$('intro').classList.remove('hidden');$('messages').innerHTML='';$('question').disabled=true;$('sendButton').disabled=true}renderDocs();setNotice(`${doc.filename} deleted.`)}catch(error){setNotice(error.message||`Could not reach the PDF server at ${API}.`,true)}}
+    function selectDocument(doc) {
+      if (activeDocument?.id !== doc.id) chatHistory = [];
+      activeDocument = doc;
+      $('selectedLabel').textContent = doc.filename;
+      $('uploadTitle').textContent = doc.filename;
+      $('uploadText').textContent = doc.status === 'ready' ? 'Ready to answer questions' : doc.status === 'failed' ? 'Processing failed' : 'Preparing your PDF...';
+      $('question').disabled = doc.status !== 'ready';
+      $('sendButton').disabled = doc.status !== 'ready';
+      $('intro').classList.add('hidden');
+      $('messages').innerHTML = '';
+      renderDocs();
+      if (doc.status === 'ready') addMessage('assistant', 'Your PDF is ready. Ask me anything about its contents.');
+      else if (doc.status !== 'failed') pollStatus(doc.id);
+    }
+    function addMessage(role,text,sources=[]){const bubble=document.createElement('div');bubble.className='message '+role;bubble.textContent=text;if(sources.length){const chips=document.createElement('div');chips.className='sources';sources.forEach(source=>{const chip=document.createElement('span');chip.className='source';chip.textContent=`${source.filename||activeDocument?.filename||'PDF'} · page ${source.page_start===source.page_end?source.page_start:`${source.page_start}–${source.page_end}`}`;chips.append(chip)});bubble.append(chips)}$('messages').append(bubble);bubble.scrollIntoView({behavior:'smooth',block:'nearest'})}
+    async function checkAnswerMode() {
+      try {
+        const response = await apiFetch('/api/health');
+        if (!response.ok) return;
+        const health = await response.json();
+        if (health.answering_mode === 'passages') {
+          $('modeNotice').textContent = 'Gemini AI answers are off because GEMINI_API_KEY is missing or invalid. PDF processing still works; answers use document text.';
+          $('modeNotice').classList.remove('hidden');
+        } else {
+          $('modeNotice').classList.add('hidden');
+        }
+      } catch {}
+    }
+    async function loadDocuments() {
+      if (!authToken) { documents = []; renderDocs(); return; }
+      try {
+        const response = await apiFetch('/api/documents');
+        if (response.status === 401) { await clearSession(); return; }
+        if (!response.ok) return;
+        documents = await response.json();
+        renderDocs();
+        if (activeDocument) {
+          const refreshed = documents.find(doc => doc.id === activeDocument.id);
+          if (refreshed) {
+            activeDocument = refreshed;
+            $('uploadText').textContent = refreshed.status === 'ready' ? 'Ready to answer questions' : refreshed.status === 'failed' ? 'Processing failed' : 'Preparing your PDF...';
+            $('question').disabled = refreshed.status !== 'ready';
+            $('sendButton').disabled = refreshed.status !== 'ready';
+          }
+        } else {
+          const latest = documents[0];
+          if (latest) selectDocument(latest);
+        }
+        for (const doc of documents) {
+          if (!['ready', 'failed'].includes(doc.status)) pollStatus(doc.id);
+        }
+      } catch {}
+    }
+    $('uploadButton').onclick=()=>{if(!authToken){pendingFile=null;openAuthModal('login');return}$('fileInput').click()};$('fileInput').onchange=()=>{if($('fileInput').files[0])uploadFile($('fileInput').files[0])};
+    async function uploadFile(file){if(!authToken){pendingFile=file;openAuthModal('login');return}if(!file.name.toLowerCase().endsWith('.pdf')){setNotice('Please choose a PDF file.',true);return}if(file.size>20*1024*1024){setNotice('This PDF is larger than 20 MB.',true);return}$('uploadButton').disabled=true;setNotice('Uploading your PDF…');const data=new FormData();data.append('file',file);try{const response=await apiFetch('/api/documents',{method:'POST',body:data});let result={};try{result=await response.json()}catch{}if(!response.ok){if(response.status===405)throw new Error(`The upload request reached a server that does not handle PDFs. FastAPI is available at http://localhost:8011. Open that address or refresh this page.`);throw new Error(result.detail||`Upload failed (${response.status}).`)}activeDocument=result;documents=[result,...documents.filter(d=>d.id!==result.id)];selectDocument(result);setNotice('');pollStatus(result.id)}catch(error){const message=error instanceof TypeError?`Can't reach the PDF server at ${API}. Open http://localhost:8011 and make sure the FastAPI server is running.`:error.message;setNotice(message,true)}finally{$('uploadButton').disabled=false;$('fileInput').value=''}}
+    async function pollStatus(id) {
+      if (activePolls.has(id)) return;
+      activePolls.add(id);
+      let delay = 1200, attempts = 0;
+      try {
+        while (true) {
+          await new Promise(resolve => setTimeout(resolve, delay));
+          try {
+            const response = await apiFetch(`/api/documents/${id}`);
+            if (response.status === 401) { await clearSession(); return; }
+            if (response.status === 404) return;
+            if (!response.ok) { delay = Math.min(delay * 1.5, 10000); continue; }
+            const doc = await response.json();
+            documents = documents.map(item => item.id === id ? doc : item);
+            if (activeDocument?.id === id) {
+              const previousStatus = activeDocument.status;
+              activeDocument = doc;
+              $('uploadText').textContent = doc.status === 'ready' ? 'Ready to answer questions' : doc.status === 'failed' ? 'Could not process this PDF' : 'Preparing your PDF...';
+              $('question').disabled = doc.status !== 'ready';
+              $('sendButton').disabled = doc.status !== 'ready';
+              if (doc.status === 'failed') setNotice(doc.error || 'Could not extract readable text from this PDF.', true);
+              if (doc.status === 'ready' && previousStatus !== 'ready') {
+                setNotice('PDF ready. Ask a question to get started.');
+                $('question').focus();
+              }
+              if (!['ready', 'failed'].includes(doc.status) && ++attempts % 20 === 0) {
+                setNotice('The PDF is still processing. This page will keep checking automatically.');
+              }
+            }
+            renderDocs();
+            if (['ready', 'failed'].includes(doc.status)) return;
+            delay = doc.status === 'embedding' ? 2000 : 1200;
+          } catch {
+            delay = Math.min(delay * 1.5, 10000);
+          }
+        }
+      } finally {
+        activePolls.delete(id);
+      }
+    }
+    $('chatForm').onsubmit=async(event)=>{event.preventDefault();const question=$('question').value.trim();if(!question||!activeDocument||activeDocument.status!=='ready')return;addMessage('user',question);$('question').value='';$('sendButton').disabled=true;const pending=document.createElement('div');pending.className='message assistant';pending.textContent='Looking through your PDF…';$('messages').append(pending);try{const response=await apiFetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({document_id:activeDocument.id,question,history:chatHistory.slice(-10)})});const result=await response.json();if(!response.ok)throw new Error(result.detail||'Could not get an answer.');pending.remove();addMessage('assistant',result.answer,result.sources||[]);if(result.model_error)setNotice(result.model_error,true);else setNotice('');chatHistory.push({role:'user',content:question},{role:'assistant',content:result.answer});chatHistory=chatHistory.slice(-12)}catch(error){pending.remove();addMessage('assistant',error.message||'Could not connect to the PDF service.');}finally{$('sendButton').disabled=false;$('question').focus()}};
+    $('question').oninput=()=>{$('question').style.height='auto';$('question').style.height=Math.min($('question').scrollHeight,150)+'px'};$('question').onkeydown=event=>{if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();$('chatForm').requestSubmit()}};
+    $('newChat').onclick=()=>{if(!authToken){openAuthModal('login');return}if(activeDocument?.status==='ready'){chatHistory=[];$('messages').innerHTML='';addMessage('assistant','New conversation started. Ask me anything about this PDF.');$('question').focus() }else{$('fileInput').click()}};
+    const zone=$('dropZone');zone.ondragover=event=>{event.preventDefault();zone.classList.add('drag')};zone.ondragleave=()=>zone.classList.remove('drag');zone.ondrop=event=>{event.preventDefault();zone.classList.remove('drag');const file=event.dataTransfer.files[0];if(file)uploadFile(file)};
+    checkAnswerMode();restoreSession();
+  </script>
+</body>
+</html>

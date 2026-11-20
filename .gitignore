@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+server/.env
+server/pdf_chat.db
+server/uploads/
